@@ -1,0 +1,49 @@
+# Open Source AMD Drivers (they're pretty good!)
+pacman -S xf86-video-amdgpu mesa-libgl lib32-mesa-libgl mesa-vdpau lib32-mesa-vdpau
+
+# AMDGPU Configuration
+
+nano /etc/X11/xorg.conf.d/20-amdgpu.conf
+
+Section "Device"
+    Identifier "Radeon R9 270X"
+    Driver "amdgpu"
+    Option "DRI" "3"
+EndSection
+
+# Early KMS load:
+
+nano /etc/mkinitcpio.conf
+
+MODULES="amdgpu"
+
+mkinitcpio -p linux
+
+# Monitor Configuration
+nano /etc/X11/xorg.conf.d/10-monitor.conf
+
+Section "Monitor"
+    Identifier             "Monitor0"
+EndSection
+
+Section "Device"
+    Identifier             "Radeon R9 270X"
+    Driver                 "amdgpu"
+    Option "DRI" "3"
+EndSection
+
+Section "Screen"
+    Identifier             "Screen0"
+    Device                 "Radeon R9 270X"
+    Monitor                "Monitor0"
+    DefaultDepth           24
+    SubSection             "Display"
+        Depth              24
+        Modes              "1280x1024" "1152x864" "1600x1200" "1024x768" "800x600" "640x480"
+    EndSubSection
+EndSection
+
+-----------------------
+
+nano /etc/modprobe.d/radeon.conf
+blacklist radeon
