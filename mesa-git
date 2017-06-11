@@ -1,0 +1,24 @@
+// To locally sign the maintainer's Key of the llvm-svn repo:
+
+pacman-key --keyserver pgp.mit.edu --recv-keys 76563F75679E4525
+pacman-key --lsign-key 76563F75679E4525
+
+[llvm-svn]
+Server = http://repos.uni-plovdiv.net/archlinux/$repo/$arch
+SigLevel = Optional TrustAll
+
+[mesa-git]
+Server = http://pkgbuild.com/~lcarlier/$repo/$arch
+SigLevel = Optional TrustAll
+
+// Not necessary
+// pacman-key --keyserver pgp.mit.edu --recv-keys  0xD1CEDDAC
+// pacman-key --lsign-key 0xD1CEDDAC
+
+pacman -S lib32-mesa-git mesa-git opencl-mesa-git lib32-mesa-libgl-git
+
+
+clang-svn clang-tools-extra-svn lib32-libdrm-git lib32-llvm-svn lib32-vulkan-radeon-git libclc-git libdrm-git llvm-svn opencl-mesa-git vulkan-radeon-git xf86-video-amdgpu-git
+
+
+clang-svn lib32-libdrm-git lib32-llvm-svn lib32-vulkan-radeon-git libclc-git libdrm-git llvm-svn vulkan-radeon-git xf86-video-amdgpu-git
