@@ -1,0 +1,8 @@
+qemu-system-x86_64 -cpu IvyBridge -enable-kvm -m 4G -soundhw hda -vga qxl -drive file=/home/amarildo/Documents/Others/OS\'s/Ubuntu\ 1/ubuntu,format=raw -cdrom /home/amarildo/Documents/Others/OS\'s/Ubuntu\ 1/mini.iso
+
+
+qemu-img create -f raw ubuntu 150G
+
+/etc/modules-load.d/kvm.conf
+kvm_amd
+kvm
