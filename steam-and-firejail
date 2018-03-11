@@ -1,4 +1,17 @@
-env STEAM_FRAME_FORCE_CLOSE=1 firejail steam
+env STEAM_FRAME_FORCE_CLOSE=1 firejail --profile=/etc/firejail/steam.profile /usr/bin/steam-native %U
+
+
+
+
+
+
+
+
+
+
+env STEAM_FRAME_FORCE_CLOSE=1 firejail --profile=/etc/firejail/steam.profile steam
+
+
 
 env STEAM_FRAME_FORCE_CLOSE=1 firejail /usr/bin/steam-runtime --noblacklist-private %U
 env STEAM_FRAME_FORCE_CLOSE=1 firejail /usr/bin/steam --noblacklist-private %U
